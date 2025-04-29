@@ -1,0 +1,64 @@
+add_newline = false
+
+format = """
+$directory\
+$status\
+$jobs\
+$python\
+$character
+"""
+
+
+
+[fill]
+symbol = " "
+
+
+[directory]
+style = "blue"
+read_only = "🔒"
+truncation_length = 4
+truncate_to_repo = false
+format = "[$read_only$path]($style) "
+
+
+[character]
+success_symbol = '[➜](bold green) '
+error_symbol = '[➜](bold red) '
+
+[jobs]
+symbol = " "
+style = "bold red"
+number_threshold = 1
+format = "[$symbol]($style)"
+
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+
+[time]
+disabled = false
+format = '[$time]($style) '
+style = "green"
+time_format = '%T'
+utc_time_offset = '-5'
+time_range = '00:00:00-23:59:59'  # This will always show the time
+
+[custom.stunnel]
+when = "ps aux | grep stunnel | grep -v grep"
+command = "ps -o etime= -p $(ps aux | grep stunnel | grep -v grep | awk '{print $2}')"
+style = "red"
+format = "[TUNNEL OPEN for $output]($style)"
+
+[shell]
+fish_indicator = '󰈺 '
+powershell_indicator = '_'
+zsh_indicator = " "
+style = 'cyan bold'
+disabled = false
+
+[python]
+symbol = '👾 '
+pyenv_version_name = true
